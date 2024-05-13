@@ -1,0 +1,45 @@
+Descriptor:
+  Name: "Cisco Talos Threat Response Integration"
+  Description: "Integración para interactuar con la API de Cisco Talos para extraer, deliberar y contextualizar observables relacionados con amenazas de seguridad."
+  Version: "1.0"
+  Author: "Diana Fernandez"
+  Contact: "dfernandezm@onesec.mx"
+  License: "MIT"
+  Documentation: "https://github.com/DitaOneSec/CiscoTalos"
+  Repository: "https://github.com/DitaOneSec/CiscoTalos"
+  SkillGroups:
+    - Name: "ThreatResponse"
+      Skills:
+        - Name: "ExtractObservables"
+          Summary: "Extrae observables utilizando la API de Cisco Talos."
+          OperationId: "ExtractObservables"
+          InputParameters:
+            - Name: "observableType"
+              Type: "string"
+              Description: "Tipo de observable a extraer (por ejemplo, IP, dominio)."
+          OutputParameters:
+            - Name: "extractedObservables"
+              Type: "array"
+              Description: "Array de observables extraídos."
+        - Name: "DeliberateObservables"
+          Summary: "Delibera sobre observables utilizando la API de Cisco Talos."
+          OperationId: "DeliberateObservables"
+          InputParameters:
+            - Name: "observables"
+              Type: "array"
+              Description: "Array de observables a deliberar."
+          OutputParameters:
+            - Name: "deliberatedObservables"
+              Type: "array"
+              Description: "Array de observables deliberados con resultados."
+        - Name: "ContextualizeObservable"
+          Summary: "Contextualiza un observable utilizando la API de Cisco Talos."
+          OperationId: "ContextualizeObservable"
+          InputParameters:
+            - Name: "observable"
+              Type: "object"
+              Description: "Observable a contextualizar."
+          OutputParameters:
+            - Name: "contextualizedObservable"
+              Type: "object"
+              Description: "Observable contextualizado con información adicional."
