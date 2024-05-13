@@ -43,3 +43,67 @@ Descriptor:
             - Name: "contextualizedObservable"
               Type: "object"
               Description: "Observable contextualizado con información adicional."
+    - Name: "ReputationIP"
+      Skills:
+        - Name: "AnalyzeIPReputation"
+          Summary: "Analiza la reputación de una dirección IP utilizando la API de Cisco Talos."
+          OperationId: "AnalyzeIPReputation"
+          InputParameters:
+            - Name: "ipAddress"
+              Type: "string"
+              Description: "Dirección IP a analizar."
+          OutputParameters:
+            - Name: "reputationScore"
+              Type: "integer"
+              Description: "Puntuación de reputación de la dirección IP."
+            - Name: "reputationDetails"
+              Type: "object"
+              Description: "Detalles adicionales sobre la reputación de la dirección IP."
+    - Name: "ReputationDomain"
+      Skills:
+        - Name: "AnalyzeDomainReputation"
+          Summary: "Analiza la reputación de un dominio utilizando la API de Cisco Talos."
+          OperationId: "AnalyzeDomainReputation"
+          InputParameters:
+            - Name: "domain"
+              Type: "string"
+              Description: "Dominio a analizar."
+          OutputParameters:
+            - Name: "reputationScore"
+              Type: "integer"
+              Description: "Puntuación de reputación del dominio."
+            - Name: "reputationDetails"
+              Type: "object"
+              Description: "Detalles adicionales sobre la reputación del dominio."
+    - Name: "ReputationURL"
+      Skills:
+        - Name: "AnalyzeURLReputation"
+          Summary: "Analiza la reputación de una URL utilizando la API de Cisco Talos."
+          OperationId: "AnalyzeURLReputation"
+          InputParameters:
+            - Name: "url"
+              Type: "string"
+              Description: "URL a analizar."
+          OutputParameters:
+            - Name: "reputationScore"
+              Type: "integer"
+              Description: "Puntuación de reputación de la URL."
+            - Name: "reputationDetails"
+              Type: "object"
+              Description: "Detalles adicionales sobre la reputación de la URL."
+    - Name: "ReputationHash"
+      Skills:
+        - Name: "AnalyzeHashReputation"
+          Summary: "Analiza la reputación de un hash utilizando la API de Cisco Talos."
+          OperationId: "AnalyzeHashReputation"
+          InputParameters:
+            - Name: "hash"
+              Type: "string"
+              Description: "Hash a analizar."
+          OutputParameters:
+            - Name: "reputationScore"
+              Type: "integer"
+              Description: "Puntuación de reputación del hash."
+            - Name: "reputationDetails"
+              Type: "object"
+              Description: "Detalles adicionales sobre la reputación del hash."
