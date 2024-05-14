@@ -1,0 +1,94 @@
+Descriptor:
+  Name: "Cisco Talos Threat Response Integration"
+  Description: "Integración para interactuar con la API de Cisco Talos para extraer, deliberar y contextualizar observables relacionados con amenazas de seguridad."
+  Version: "1.0"
+  Author: "Diana Fernandez"
+  Contact: "dfernandezm@onesec.mx"
+  License: "MIT"
+  Documentation: "https://github.com/DitaOneSec/CiscoTalos"
+  Repository: "https://github.com/DitaOneSec/CiscoTalos"
+  Template: |-
+    {
+      "$schema": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/deployments.json",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "apiKey": {
+          "type": "string",
+          "metadata": {
+            "description": "API Key for Cisco Talos"
+          }
+        }
+      },
+      "variables": {},
+      "resources": [
+        {
+          "type": "Microsoft.Security/providers/skills",
+          "apiVersion": "2020-01-01-preview",
+          "name": "[concat('/', 'Microsoft.Security', '/', 'CiscoTalosSkill')]",
+          "properties": {
+            "description": "Cisco Talos Threat Response Integration",
+            "skills": [
+              {
+                "name": "ThreatResponse",
+                "skills": [
+                  {
+                    "name": "ExtractObservables",
+                    "operations": [
+                      {
+                        "name": "ExtractObservables",
+                        "displayName": "Extrae observables utilizando la API de Cisco Talos",
+                        "description": "Extrae observables utilizando la API de Cisco Talos.",
+                        "policyIdentifier": "CiscoTalosSkill/ExtractObservables",
+                        "policyVersion": "1.0.0",
+                        "parameters": [
+                          {
+                            "name": "observableType",
+                            "type": "string",
+                            "displayName": "Tipo de observable a extraer",
+                            "description": "Tipo de observable a extraer (por ejemplo, IP, dominio)."
+                          }
+                        ],
+                        "outputParameters": [
+                          {
+                            "name": "extractedObservables",
+                            "type": "array",
+                            "displayName": "Observables extraídos"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "DeliberateObservables",
+                    "operations": [
+                      {
+                        "name": "DeliberateObservables",
+                        "displayName": "Delibera sobre observables utilizando la API de Cisco Talos",
+                        "description": "Delibera sobre observables utilizando la API de Cisco Talos.",
+                        "policyIdentifier": "CiscoTalosSkill/DeliberateObservables",
+                        "policyVersion": "1.0.0",
+                        "parameters": [
+                          {
+                            "name": "observables",
+                            "type": "array",
+                            "displayName": "Observables",
+                            "description": "Observables a deliberar."
+                          }
+                        ],
+                        "outputParameters": [
+                          {
+                            "name": "deliberatedObservables",
+                            "type": "array",
+                            "displayName": "Observables deliberados"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
