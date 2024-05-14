@@ -82,4 +82,24 @@ SkillGroups:
         OperationId: "AnalyzeURLReputation"
         InputParameters:
           - Name: "url"
-            Type
+            Type: "string"
+            Description: "URL a analizar."
+        OutputParameters:
+          - Name: "reputationScore"
+            Type: "integer"
+            Description: "Puntuación de reputación de la URL."
+          - Name: "reputationDetails"
+            Type: "object"
+            Description: "Detalles adicionales sobre la reputación de la URL."
+  - Name: "ReputationHash"
+    Skills:
+      - Name: "AnalyzeHashReputation"
+        Summary: "Analiza la reputación de un hash utilizando la API de Cisco Talos."
+        OperationId: "AnalyzeHashReputation"
+        InputParameters:
+          - Name: "hash"
+            Type: "string"
+            Description: "Hash a analizar."
+        OutputParameters:
+          - Name: "reputationScore"
+            Type: "string"
